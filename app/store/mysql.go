@@ -130,7 +130,7 @@ func (sc *SqlClient) AddUser(user *User) (int64, error) {
 		return 0, errors.New("param empty")
 	}
 	query := "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,?)"
-	ret, err := sc.c.Exec(query, user.OpenId, user.Uid, user.Name, user.VipTime, user.Version, user.Password, user.Data, user.ClientIP, user.CreateTime)
+	ret, err := sc.c.Exec(query, user.OpenId, user.Uid, user.Name, user.VipTime, user.Version, user.Password, user.Data, user.ClientIP, user.CreateTime, user.Device)
 	if err != nil {
 		return 0, err
 	}
