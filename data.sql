@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `data`          MEDIUMBLOB,
     `clientIP`      VARCHAR(64),
     `createTime`    BIGINT COMMENT '创建时间',
-
+    `device`        VARCHAR(64),
      INDEX uidIndex(uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
