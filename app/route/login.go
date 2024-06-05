@@ -46,8 +46,8 @@ func Login(c *gin.Context) {
 		OpenId    string `form:"open_id" binding:"required"`
 		Password  string `form:"password" binding:"required"`
 		Version   string `form:"version"`
-		HeartBeat int    `form:"heart_beat"` // 是否心跳检查
-		Uuid      string `form:"uuid"`       // 唯一设备id，用来限制设备数量
+		HeartBeat bool   `form:"heart_beat"` // 是否心跳检查
+		Device    string `form:"device"`     // 唯一设备id，用来限制设备数量
 	}
 
 	if err := c.ShouldBind(&reqParams); err != nil {
@@ -71,7 +71,16 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// 非心跳的话，挤掉前面的设备
+	// 非心跳的话，挤掉前面的设备 单设备登录
+	if reqParams.HeartBeat && reqParams.Device != userInfo.Device {
+		c.JSON(http.StatusOK, util.Pack(def.CodePasswordError, "又其他设备登录了该账号", nil))
+		return
+	}
+
+	if !reqParams.HeartBeat && reqParams.Device != userInfo.Device {
+		userInfo.Device = reqParams.Device
+		store.MC.SaveUser(userInfo)
+	}
 
 	resp, err := loginHandler(c, userInfo, reqParams.Password)
 	if err != nil {
@@ -167,6 +176,7 @@ func newUser(openId string, password string) (*store.User, error) {
 		data,
 		"",
 		time.Now().Unix(),
+		"",
 	}
 	return user, nil
 }

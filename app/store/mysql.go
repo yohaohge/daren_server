@@ -117,8 +117,8 @@ func (sc *SqlClient) SaveUser(user *User) (int64, error) {
 	if user == nil {
 		return 0, errors.New("param empty")
 	}
-	query := "UPDATE user SET name = ?, vipTime = ?, version = ?, password = ?, data = ?, clientIp = ?, createTime = ?"
-	ret, err := sc.c.Exec(query, user.Name, user.VipTime, user.Version, user.Password, user.Data, user.ClientIP, user.CreateTime)
+	query := "UPDATE user SET name = ?, vipTime = ?, version = ?, password = ?, data = ?, clientIp = ?, createTime = ?, device = ?"
+	ret, err := sc.c.Exec(query, user.Name, user.VipTime, user.Version, user.Password, user.Data, user.ClientIP, user.CreateTime, user.Device)
 	if err != nil {
 		return 0, err
 	}

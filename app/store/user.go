@@ -16,6 +16,7 @@ type User struct {
 	Data       interface{} `json:"data" db:"data"`
 	ClientIP   string      `json:"clientIP" db:"clientIP"`
 	CreateTime int64       `json:"createTime" db:"createTime"`
+	Device     string      `json:"device" db:"device"`
 }
 
 type Session struct {
