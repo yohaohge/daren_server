@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"server.com/daren/config"
 	"time"
-	"LittleVideo/config"
 )
 
 func InitLogger() {

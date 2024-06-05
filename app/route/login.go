@@ -1,17 +1,17 @@
 package route
 
 import (
-	"LittleVideo/app/store"
-	"LittleVideo/config"
-	"LittleVideo/def"
-	"LittleVideo/middleware"
-	"LittleVideo/pkg/crypto"
-	"LittleVideo/util"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"net/http"
+	"server.com/daren/app/store"
+	"server.com/daren/config"
+	"server.com/daren/def"
+	"server.com/daren/middleware"
+	"server.com/daren/pkg/crypto"
+	"server.com/daren/util"
 	"strconv"
 	"strings"
 	"time"

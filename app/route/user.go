@@ -1,14 +1,14 @@
 package route
 
 import (
-	"LittleVideo/app/store"
-	"LittleVideo/def"
-	"LittleVideo/middleware"
-	"LittleVideo/util"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
+	"server.com/daren/app/store"
+	"server.com/daren/def"
+	"server.com/daren/middleware"
+	"server.com/daren/util"
 )
 
 func setupUserRouter(r *gin.Engine) {

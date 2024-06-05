@@ -1,8 +1,8 @@
 package store
 
 import (
-	"LittleVideo/def"
 	"github.com/sirupsen/logrus"
+	"server.com/daren/def"
 	"time"
 )
 

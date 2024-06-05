@@ -1,15 +1,15 @@
 package main
 
 import (
-	"LittleVideo/app/route"
-	"LittleVideo/app/store"
-	"LittleVideo/config"
-	"LittleVideo/middleware"
-	"LittleVideo/util"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os"
+	"server.com/daren/app/route"
+	"server.com/daren/app/store"
+	"server.com/daren/config"
+	"server.com/daren/middleware"
+	"server.com/daren/util"
 	"strconv"
 	"time"
 )

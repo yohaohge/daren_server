@@ -1,9 +1,9 @@
 package route
 
 import (
-	"LittleVideo/middleware"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	"server.com/daren/middleware"
 )
 
 func SetupRouter(r *gin.Engine) {

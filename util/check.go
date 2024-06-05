@@ -2,10 +2,10 @@ package util
 
 import (
 	"regexp"
+	"server.com/daren/def"
 	"strconv"
 	"strings"
 	"time"
-	"LittleVideo/def"
 )
 
 func CheckDeviceId(deviceId string) bool {

@@ -1,9 +1,6 @@
 package store
 
 import (
-	"LittleVideo/config"
-	"LittleVideo/def"
-	"LittleVideo/pkg/crypto"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -13,6 +10,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"log"
 	"math/rand"
+	"server.com/daren/config"
+	"server.com/daren/def"
+	"server.com/daren/pkg/crypto"
 	"strconv"
 	"strings"
 	"time"

@@ -1,13 +1,13 @@
 package middleware
 
 import (
-	"LittleVideo/app/store"
-	"LittleVideo/config"
-	"LittleVideo/def"
-	"LittleVideo/util"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
+	"server.com/daren/app/store"
+	"server.com/daren/config"
+	"server.com/daren/def"
+	"server.com/daren/util"
 	"strconv"
 	"strings"
 )

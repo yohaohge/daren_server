@@ -1,7 +1,7 @@
 package store
 
 import (
-	"LittleVideo/config"
+	"server.com/daren/config"
 	"time"
 
 	"github.com/go-redis/redis"

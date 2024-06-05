@@ -1,11 +1,11 @@
 package route
 
 import (
-	"LittleVideo/config"
-	"LittleVideo/def"
-	"LittleVideo/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"server.com/daren/config"
+	"server.com/daren/def"
+	"server.com/daren/util"
 )
 
 func setupGmRouter(r *gin.Engine) {
