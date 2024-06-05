@@ -1,0 +1,23 @@
+{
+  "payConfig": [
+    {
+      "id": 1,
+      "price": 990,
+      "desc": "9.9 VIP 1个月",
+      "payCode": "",
+      "payLink": "http://haoju223.cc/tmp/9_9.jpg"
+    }
+  ],
+  "bannerConfig": [
+    {
+      "src": "",
+      "link": ""
+    }
+  ],
+  "notice": "好剧天天看",
+  "support": "Banlangen54321",
+  "xyUrl": "【闲鱼】https://m.tb.cn/h.5xyWNly?tk=OytgWMw4tCn HU7632 「我在闲鱼发布了【短剧30天无限畅享】」\n点击链接直接打开",
+  "shareUrl": "http://haoju223.cc/",
+  "wxUrl": "http://haoju223.cc/tmp/qr.jpg",
+  "downloadUrl": ""
+}
