@@ -82,12 +82,18 @@ func Login(c *gin.Context) {
 		store.MC.SaveUser(userInfo)
 	}
 
+	if userInfo.IsVipExpire() && reqParams.HeartBeat {
+		c.JSON(http.StatusOK, util.Pack(def.CodePasswordError, "VIP已经过期了", nil))
+		return
+	}
+
 	resp, err := loginHandler(c, userInfo, reqParams.Password)
 	if err != nil {
 		logrus.WithFields(logrus.Fields{"uid": userInfo.Uid, "err": err}).Error("login error")
 		c.JSON(http.StatusOK, util.Pack(def.CodeFailed, "登录失败"+err.Error(), nil))
 		return
 	}
+
 	c.JSON(http.StatusOK, util.Pack(def.CodeSuccess, "ok", resp))
 }
 
