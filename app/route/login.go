@@ -174,8 +174,9 @@ func Register(c *gin.Context) {
 func AddVip(c *gin.Context) {
 	var reqParams struct {
 		OpenId string `form:"open_id" binding:"required"`
-		Days   int32  `form:"days" binding:"required"`
+		Days   int    `form:"days" binding:"required"`
 	}
+	logrus.Debug(reqParams.OpenId, "添加vip", reqParams.Days)
 
 	if err := c.ShouldBind(&reqParams); err != nil {
 		logrus.Errorln(err)
