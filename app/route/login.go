@@ -32,6 +32,7 @@ func setupLoginRouter(r *gin.Engine) {
 		loginApi.POST("/login", Login)
 		loginApi.POST("/register", Register)
 		loginApi.GET("/config", ConfigData)
+		loginApi.GET("/addVip", AddVip)
 
 		loginApi.GET("/index", Index)
 		loginApi.GET("/v_list", VDataList)
@@ -80,6 +81,11 @@ func Login(c *gin.Context) {
 	if !reqParams.HeartBeat && reqParams.Device != userInfo.Device {
 		userInfo.Device = reqParams.Device
 		store.MC.SaveUser(userInfo)
+	}
+
+	if userInfo.IsVipExpire() {
+		c.JSON(http.StatusOK, util.Pack(def.CodePasswordError, "VIP已经过期了，请联系管理员", nil))
+		return
 	}
 
 	if userInfo.IsVipExpire() && reqParams.HeartBeat {
@@ -161,6 +167,36 @@ func Register(c *gin.Context) {
 		c.JSON(http.StatusOK, util.Pack(def.CodeFailed, "注册失败", nil))
 		return
 	}
+
+	c.JSON(http.StatusOK, util.Pack(def.CodeSuccess, "ok", nil))
+}
+
+func AddVip(c *gin.Context) {
+	var reqParams struct {
+		OpenId string `form:"open_id" binding:"required"`
+		Days   int32  `form:"days" binding:"required"`
+	}
+
+	if err := c.ShouldBind(&reqParams); err != nil {
+		logrus.Errorln(err)
+		c.JSON(http.StatusOK, util.Pack(def.CodeParamError, "参数不正确", err.Error()))
+		return
+	}
+
+	userInfo, err := store.MC.GetUserByOpenId(reqParams.OpenId)
+	if err != nil {
+		logrus.Errorln(err)
+		c.JSON(http.StatusOK, util.Pack(def.CodeParamError, "参数错误", nil))
+		return
+	}
+	if userInfo == nil {
+		c.JSON(http.StatusOK, util.Pack(def.CodeUserAlreadyExist, "user not already", nil))
+		return
+	}
+
+	userInfo.VipTime = time.Now().Unix() + int64(reqParams.Days*24*60*60)
+
+	store.MC.SaveUser(userInfo)
 
 	c.JSON(http.StatusOK, util.Pack(def.CodeSuccess, "ok", nil))
 }
