@@ -32,7 +32,7 @@ func setupLoginRouter(r *gin.Engine) {
 		loginApi.POST("/login", Login)
 		loginApi.POST("/register", Register)
 		loginApi.GET("/config", ConfigData)
-		loginApi.GET("/addVip", AddVip)
+		loginApi.POSt("/addVip", AddVip)
 
 		loginApi.GET("/index", Index)
 		loginApi.GET("/v_list", VDataList)
